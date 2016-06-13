@@ -1,12 +1,14 @@
+import Stops from './stops';
+
 xtag.register('video-sections', {
   lifecycle: {
     created() {
       this._onPlay = this.onPlay.bind(this);
       this._onPause = this.onPause.bind(this);
 
-      this.video = document.createElement('video');
+      this.xtag.video = this.video = document.createElement('video');
       this.video.controls = true;
-      this.video.muted = true;
+      this.video.autoplay = true;
       this.appendChild(this.video);
 
       this.registerListeners();
@@ -14,12 +16,15 @@ xtag.register('video-sections', {
   },
   accessors: {
     src: {
+      attribute: {
+        property: 'video'
+      }
+    },
+    sections: {
       attribute: {},
-      get() {
-        return this.video.src;
-      },
-      set(src) {
-        this.video.src = src;
+      set(sections) {
+        let times = sections.split(',').map(x=>parseInt(x))
+        this.stops = new Stops(times);
       }
     }
   },
@@ -33,10 +38,28 @@ xtag.register('video-sections', {
       this.video.removeEventListener('pause', this._onPause);
     },
     onPlay() {
+      let next = this.stops.nextStop(this.video.currentTime);
+      this.stopAt(next);
       console.log("playing");
     },
     onPause() {
+      this.clearTimer();
       console.log("paused");
+    },
+    clearTimer() {
+      if (this._timer) {
+        clearTimeout(this._timer);
+      }
+    },
+    stopAt(time) {
+      this.clearTimer();
+      let currentTime = this.video.currentTime;
+      if (currentTime < time) {
+        this._timer = setTimeout(() => {
+          this.video.pause();
+          this.video.currentTime = time;
+        }, (time - currentTime) * 1000);
+      }
     }
   }
 });

@@ -1,5 +1,9 @@
 import Stops from './stops';
 
+if (typeof xtag === 'undefined') {
+  throw new Error('<video-sections> depends on x-tag. Make sure you\'ve included the x-tag-core script before video-sections.js');
+}
+
 xtag.register('video-sections', {
   lifecycle: {
     created() {

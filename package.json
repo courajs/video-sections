@@ -1,0 +1,27 @@
+{
+  "name": "video-sections",
+  "version": "0.0.0",
+  "description": "Play a video that stops at specified timestamps. Good for presentations or video tutorials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/courajs/video-sections.git"
+  },
+  "keywords": [
+    "custom-element",
+    "custom-elements",
+    "web-component",
+    "web-components",
+    "x-tag",
+    "video"
+  ],
+  "author": "Aaron Sikes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/courajs/video-sections/issues"
+  },
+  "homepage": "https://github.com/courajs/video-sections#readme"
+}

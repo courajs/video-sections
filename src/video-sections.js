@@ -8,7 +8,6 @@ xtag.register('video-sections', {
 
       this.xtag.video = this.video = document.createElement('video');
       this.video.controls = true;
-      this.video.autoplay = true;
       this.appendChild(this.video);
 
       this.registerListeners();
@@ -25,6 +24,7 @@ xtag.register('video-sections', {
       set(sections) {
         let times = sections.split(',').map(x=>parseInt(x))
         this.stops = new Stops(times);
+        this.setNextStop();
       }
     }
   },
@@ -38,8 +38,7 @@ xtag.register('video-sections', {
       this.video.removeEventListener('pause', this._onPause);
     },
     onPlay() {
-      let next = this.stops.nextStop(this.video.currentTime);
-      this.stopAt(next);
+      this.setNextStop();
       console.log("playing");
     },
     onPause() {
@@ -50,6 +49,10 @@ xtag.register('video-sections', {
       if (this._timer) {
         clearTimeout(this._timer);
       }
+    },
+    setNextStop() {
+      let next = this.stops.nextStop(this.video.currentTime);
+      this.stopAt(next);
     },
     stopAt(time) {
       this.clearTimer();

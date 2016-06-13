@@ -20,7 +20,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src",
+    "demo.html",
+    "package.json"
   ],
   "dependencies": {
     "x-tag-core": "^1.5.11"

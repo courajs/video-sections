@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import Stops from '../lib/stops';
+import Stops from '../src/stops';
 
 describe('Stops', function() {
   describe('#nextStop(time)', function () {

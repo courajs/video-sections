@@ -1,0 +1,28 @@
+{
+  "name": "video-sections",
+  "description": "Play a video that stops at specified timestamps. Good for presentations or video tutorials",
+  "main": "video-sections.js",
+  "authors": [
+    "Aaron Sikes"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "custom-element",
+    "custom-elements",
+    "web-component",
+    "web-components",
+    "x-tag",
+    "video"
+  ],
+  "homepage": "https://github.com/courajs/video-sections",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "x-tag-core": "^1.5.11"
+  }
+}
